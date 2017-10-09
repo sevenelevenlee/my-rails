@@ -1,0 +1,13 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1>Recent Posts</h1>
+
+<% @posts.each do |post| %>
+   <%=  render 'commen', :post => post %>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
