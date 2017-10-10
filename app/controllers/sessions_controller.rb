@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
 
   def new
-
+    flash[:failer_provider] = request.env['omniauth.error.strategy'].name
+    flash[:failer_type] = request.env['omniauth.error.type']
   end
 
   def create
-    binding.pry
     #自己验证用户
     # @user = User.authentication(params[:login], params[:password])
     # if @user
