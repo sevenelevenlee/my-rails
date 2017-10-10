@@ -3,11 +3,17 @@ class User < ApplicationRecord
   validates :nickname, :presence => true
   validates :email, :presence => true, uniqueness: true
   has_many :authentications
+  has_many :posts
   # validates :login, :presence => true, :uniqueness => true
 
   # attr_accessor :password
   # before_save :generate_password
   accepts_nested_attributes_for :authentications
+
+  #白名单保护
+  # attr_accessible :nickname, :eamil
+  #黑名单
+  # attr_protected :admin
 
   class << self
     def from_auth(auth)
