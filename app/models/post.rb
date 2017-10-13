@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :content, :presence => true
 
   has_many :comments
+  has_many :attachments, as: :attachmentable
   # has_and_belongs_to_many :tags
   has_many :taggings
   has_many :tags, through: :taggings
